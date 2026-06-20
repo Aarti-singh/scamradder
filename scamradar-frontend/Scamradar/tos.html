@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Terms of Service – ScamRadar</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/style.css" />
+<style>
+  .tos-layout { max-width: 820px; margin: 0 auto; padding: 110px 5% 80px; }
+  .tos-header { margin-bottom: 48px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
+  .tos-header h1 { font-size: clamp(2rem,4vw,3rem); margin-bottom: 12px; }
+  .tos-header p { color: var(--muted); font-size: 0.9rem; line-height: 1.7; }
+  .tos-effective { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,77,77,0.08); border: 1px solid rgba(255,77,77,0.2); border-radius: 8px; padding: 6px 14px; font-size: 0.78rem; color: var(--accent); margin-bottom: 16px; }
+
+  .tos-toc { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 24px 28px; margin-bottom: 48px; }
+  .tos-toc h3 { font-family: 'Syne', sans-serif; font-size: 0.85rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 14px; }
+  .tos-toc ol { padding-left: 20px; }
+  .tos-toc li { margin-bottom: 6px; }
+  .tos-toc a { color: var(--accent); text-decoration: none; font-size: 0.88rem; }
+  .tos-toc a:hover { text-decoration: underline; }
+
+  .tos-section { margin-bottom: 48px; scroll-margin-top: 90px; }
+  .tos-section h2 { font-family: 'Syne', sans-serif; font-size: 1.3rem; font-weight: 800; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--border); letter-spacing: -0.01em; }
+  .tos-section h3 { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; margin: 20px 0 8px; }
+  .tos-section p { color: var(--muted); font-size: 0.9rem; line-height: 1.8; margin-bottom: 12px; font-weight: 300; }
+  .tos-section ul, .tos-section ol { color: var(--muted); font-size: 0.9rem; line-height: 1.8; padding-left: 22px; margin-bottom: 14px; }
+  .tos-section li { margin-bottom: 6px; font-weight: 300; }
+  .tos-section strong { color: var(--text); font-weight: 600; }
+
+  .highlight-box { background: rgba(255,77,77,0.06); border: 1px solid rgba(255,77,77,0.2); border-radius: 12px; padding: 18px 20px; margin: 16px 0; }
+  .highlight-box p { color: var(--text) !important; font-size: 0.88rem !important; margin: 0; }
+  .highlight-box strong { color: var(--accent) !important; }
+
+  .green-box { background: rgba(34,209,122,0.06); border: 1px solid rgba(34,209,122,0.2); border-radius: 12px; padding: 18px 20px; margin: 16px 0; }
+  .green-box p { color: var(--text) !important; font-size: 0.88rem !important; margin: 0; }
+
+  .tos-footer-note { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 28px; text-align: center; margin-top: 60px; }
+  .tos-footer-note p { color: var(--muted); font-size: 0.85rem; margin: 0; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo"><div class="logo-icon">🛡️</div>Scam<span>Radar</span></a>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="feed.html">Live Feed</a></li>
+    <li><a href="search.html">Search</a></li>
+    <li><a href="report.html">Report Scam</a></li>
+    <li><a href="dashboard.html">Dashboard</a></li>
+  </ul>
+  <a href="report.html" class="btn-primary nav-cta">Report a Scam</a>
+  <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a><a href="feed.html">Live Feed</a>
+  <a href="search.html">Search</a><a href="report.html">Report Scam</a><a href="dashboard.html">Dashboard</a>
+</div>
+
+<div class="tos-layout">
+
+  <div class="tos-header">
+    <div class="section-label">Legal</div>
+    <h1>Terms of Service</h1>
+    <div class="tos-effective">📅 Effective Date: March 21, 2025 · Last Updated: March 21, 2025</div>
+    <p>Please read these Terms of Service ("Terms") carefully before using ScamRadar ("Platform", "we", "us", "our"). By accessing or using the Platform in any way — including browsing, searching, or submitting a report — you agree to be bound by these Terms. If you do not agree, do not use this Platform.</p>
+  </div>
+
+  <!-- TABLE OF CONTENTS -->
+  <div class="tos-toc">
+    <h3>Contents</h3>
+    <ol>
+      <li><a href="#s1">Nature of the Platform</a></li>
+      <li><a href="#s2">Intermediary Status & IT Act Section 79</a></li>
+      <li><a href="#s3">User-Generated Content — Disclaimer</a></li>
+      <li><a href="#s4">User Obligations & Prohibited Conduct</a></li>
+      <li><a href="#s5">Legal Liability of Reporters</a></li>
+      <li><a href="#s6">No Verification of Reports</a></li>
+      <li><a href="#s7">Report Threshold & Display Policy</a></li>
+      <li><a href="#s8">Score Decay & Accuracy</a></li>
+      <li><a href="#s9">Dispute & Takedown Policy</a></li>
+      <li><a href="#s10">Privacy & Anonymity</a></li>
+      <li><a href="#s11">Cyber Crime Reporting</a></li>
+      <li><a href="#s12">Limitation of Liability</a></li>
+      <li><a href="#s13">Indemnification</a></li>
+      <li><a href="#s14">Governing Law & Jurisdiction</a></li>
+      <li><a href="#s15">Grievance Officer</a></li>
+      <li><a href="#s16">Changes to Terms</a></li>
+      <li><a href="#s17">Contact</a></li>
+    </ol>
+  </div>
+
+  <!-- SECTION 1 -->
+  <div class="tos-section" id="s1">
+    <h2>1. Nature of the Platform</h2>
+    <p>ScamRadar is a <strong>community-driven, anonymous scam awareness platform</strong> that allows members of the public to share their experiences with suspected fraudulent phone numbers, UPI IDs, and email addresses. The Platform is designed to help individuals make more informed decisions before engaging with unknown parties.</p>
+    <p>ScamRadar is <strong>not a law enforcement agency, regulatory body, or judicial authority</strong>. We do not investigate, verify, adjudicate, or draw legal conclusions about any person, entity, or reported incident. Nothing on this Platform constitutes a finding of guilt, criminal record, legal judgment, or official designation of any kind.</p>
+    <div class="highlight-box">
+      <p><strong>Important:</strong> All content on this Platform represents the personal experiences and opinions of individual community members. ScamRadar makes no representation as to the truth, accuracy, completeness, or reliability of any report, and expressly disclaims any such representation.</p>
+    </div>
+  </div>
+
+  <!-- SECTION 2 -->
+  <div class="tos-section" id="s2">
+    <h2>2. Intermediary Status & IT Act Section 79</h2>
+    <p>ScamRadar operates as an <strong>intermediary</strong> as defined under Section 2(1)(w) of the Information Technology Act, 2000 ("IT Act") and is entitled to the safe harbour protections under <strong>Section 79 of the IT Act</strong>, subject to compliance with the applicable rules and guidelines.</p>
+    <p>As an intermediary, ScamRadar:</p>
+    <ul>
+      <li>Does <strong>not initiate</strong> the transmission of user-submitted reports</li>
+      <li>Does <strong>not select</strong> the receivers of user-submitted content</li>
+      <li>Does <strong>not modify</strong> the information contained in user-submitted reports</li>
+      <li>Acts as a <strong>passive conduit</strong> for user-generated content</li>
+    </ul>
+    <p>ScamRadar complies with the <strong>Information Technology (Intermediary Guidelines and Digital Media Ethics Code) Rules, 2021</strong> and maintains a designated Grievance Officer as required.</p>
+    <div class="green-box">
+      <p>ScamRadar's intermediary status means that <strong>legal liability for the content of reports rests with the user who submitted the report</strong>, not with ScamRadar, provided ScamRadar acts expeditiously upon receiving valid takedown requests.</p>
+    </div>
+  </div>
+
+  <!-- SECTION 3 -->
+  <div class="tos-section" id="s3">
+    <h2>3. User-Generated Content — Disclaimer</h2>
+    <p>All reports, descriptions, tags, and information on this Platform are <strong>submitted by anonymous third-party users</strong> and constitute user-generated content ("UGC"). ScamRadar does not author, endorse, validate, or take ownership of any UGC.</p>
+    <p>Specifically, ScamRadar does <strong>NOT</strong>:</p>
+    <ul>
+      <li>Verify the identity of report submitters</li>
+      <li>Independently investigate any reported incident</li>
+      <li>Confirm that any reported phone number, UPI ID, or email address belongs to a fraudster</li>
+      <li>Make any finding or representation that any entity is guilty of fraud or any other offence</li>
+      <li>Guarantee the accuracy, completeness, or reliability of any report</li>
+    </ul>
+    <p>The term <strong>"reported by X users"</strong> used on this Platform refers solely to the number of submissions received for a given entity, and does not imply that those submissions have been verified or that the entity is a scammer. <strong>The risk indicators and report counts are informational statistics, not verdicts.</strong></p>
+  </div>
+
+  <!-- SECTION 4 -->
+  <div class="tos-section" id="s4">
+    <h2>4. User Obligations & Prohibited Conduct</h2>
+    <p>By submitting any content to ScamRadar, you represent, warrant and agree that:</p>
+    <ul>
+      <li>You are submitting a report based on your <strong>genuine personal experience</strong></li>
+      <li>All information you provide is <strong>true, accurate and not misleading</strong> to the best of your knowledge</li>
+      <li>You have not fabricated, exaggerated, or distorted any facts</li>
+      <li>You are not submitting a report to <strong>harass, defame, harm, or seek revenge</strong> against any individual or entity</li>
+      <li>You are not submitting a report on behalf of, or at the direction of, any competitor, disgruntled party, or malicious actor</li>
+    </ul>
+    <h3>Prohibited Uses</h3>
+    <p>You must NOT use this Platform to:</p>
+    <ul>
+      <li>Submit false, fabricated, or misleading reports about any person or entity</li>
+      <li>Report someone with the intention of defaming, harassing, or causing reputational damage without genuine grounds</li>
+      <li>Submit reports about yourself or entities you control in order to test, manipulate, or game the Platform</li>
+      <li>Attempt to reverse-engineer, scrape, or commercially exploit the Platform's data</li>
+      <li>Impersonate law enforcement, government bodies, or other official institutions</li>
+      <li>Submit content that is obscene, threatening, or violates any applicable law</li>
+    </ul>
+  </div>
+
+  <!-- SECTION 5 -->
+  <div class="tos-section" id="s5">
+    <h2>5. Legal Liability of Reporters</h2>
+    <div class="highlight-box">
+      <p><strong>You are personally and solely legally responsible for every report you submit.</strong></p>
+    </div>
+    <p>If you submit a false, misleading, or malicious report, you may be liable under:</p>
+    <ul>
+      <li><strong>IPC Section 499 & 500</strong> — Defamation (criminal and civil)</li>
+      <li><strong>IPC Section 182</strong> — Providing false information to a public servant</li>
+      <li><strong>IPC Section 500</strong> — Punishment for defamation (up to 2 years imprisonment)</li>
+      <li><strong>IT Act Section 66D</strong> — Cheating by personation using computer resources</li>
+      <li><strong>IT Act Section 67</strong> — Publishing false electronic records</li>
+      <li>Civil suits for damages, injunctions, and other relief by the affected party</li>
+    </ul>
+    <p>ScamRadar will <strong>fully cooperate with law enforcement</strong> and provide any available data (including IP addresses, submission metadata, and timestamps) in response to valid legal orders, subpoenas, or court directions. <strong>Anonymity on this Platform does not guarantee legal immunity.</strong></p>
+  </div>
+
+  <!-- SECTION 6 -->
+  <div class="tos-section" id="s6">
+    <h2>6. No Verification of Reports</h2>
+    <p>ScamRadar does <strong>not verify</strong> whether any submitted report is true, accurate, or reliable. We do not conduct background checks, call the reported entities, review financial records, or engage in any investigative activity.</p>
+    <p>The Platform's <strong>report count and activity indicators</strong> are computed automatically based on the number of community submissions received. They are <strong>statistical summaries of user submissions only</strong> and do not represent ScamRadar's opinion, finding, or conclusion about any individual or entity.</p>
+    <p>Users viewing this Platform must exercise their own independent judgment and are strongly advised not to make critical financial or safety decisions based solely on information found here.</p>
+  </div>
+
+  <!-- SECTION 7 -->
+  <div class="tos-section" id="s7">
+    <h2>7. Report Threshold & Display Policy</h2>
+    <p>To reduce the risk of false positives and protect individuals from isolated malicious reports, ScamRadar applies the following display policy:</p>
+    <ul>
+      <li>An entity will <strong>not be publicly highlighted</strong> until it has received reports from a minimum of <strong>3 independent users</strong></li>
+      <li>Single-report entities are displayed only with a <strong>prominent low-confidence disclaimer</strong></li>
+      <li>All results — regardless of report count — carry a clear disclaimer that reports are unverified community submissions</li>
+    </ul>
+    <p>This threshold policy does not guarantee that all displayed reports are accurate, but it significantly reduces the likelihood of a single malicious actor weaponising the Platform against an innocent party.</p>
+  </div>
+
+  <!-- SECTION 8 -->
+  <div class="tos-section" id="s8">
+    <h2>8. Score Decay & Accuracy</h2>
+    <p>ScamRadar applies an automatic <strong>activity decay system</strong> to all flagged entities. The confidence indicators associated with an entity are automatically reduced based on the time elapsed since the last report was submitted:</p>
+    <ul>
+      <li><strong>Under 30 days</strong> — Full weight</li>
+      <li><strong>30–90 days</strong> — 10% reduction</li>
+      <li><strong>90–180 days</strong> — 25% reduction</li>
+      <li><strong>180–365 days</strong> — 50% reduction</li>
+      <li><strong>Over 365 days</strong> — 75% reduction</li>
+    </ul>
+    <p>This system ensures that old, potentially stale reports do not permanently and unfairly stigmatise an entity, particularly in cases where phone numbers change ownership or situations are resolved.</p>
+  </div>
+
+  <!-- SECTION 9 -->
+  <div class="tos-section" id="s9">
+    <h2>9. Dispute & Takedown Policy</h2>
+    <p>Any individual or entity that believes a report about them on ScamRadar is false, defamatory, or otherwise unlawful has the right to submit a formal dispute. ScamRadar is committed to resolving all disputes fairly and expeditiously.</p>
+    <h3>Process</h3>
+    <ul>
+      <li>Disputes can be submitted at <a href="dispute.html" style="color:var(--accent)">scamradar.in/dispute</a></li>
+      <li>Acknowledgement within <strong>24 hours</strong> of receipt</li>
+      <li>Interim "Under Dispute" notice added to the relevant result within <strong>24 hours</strong></li>
+      <li>Review and decision within <strong>15 days</strong> as required under IT Rules 2021</li>
+      <li>If a report is found to be false or unsubstantiated, it will be <strong>removed or marked accordingly</strong></li>
+    </ul>
+    <p>ScamRadar reserves the right to remove any report at its discretion, particularly where there is a credible dispute and insufficient corroborating reports.</p>
+    <div class="green-box">
+      <p>ScamRadar's prompt and fair dispute resolution process is a core part of its intermediary compliance framework and legal protection strategy under IT Act Section 79.</p>
+    </div>
+  </div>
+
+  <!-- SECTION 10 -->
+  <div class="tos-section" id="s10">
+    <h2>10. Privacy & Anonymity</h2>
+    <p>ScamRadar does not require users to create an account or provide personal information to submit reports or browse the Platform. Reports are submitted anonymously.</p>
+    <p>However, certain technical information may be automatically collected including:</p>
+    <ul>
+      <li>IP address and approximate geolocation (for abuse prevention)</li>
+      <li>Browser type and device information</li>
+      <li>Submission timestamp</li>
+    </ul>
+    <p>This technical information is <strong>not displayed publicly</strong> and is used only for Platform security, abuse prevention, and compliance with legal orders. ScamRadar will disclose this information to law enforcement only in response to valid legal process.</p>
+    <p><strong>Anonymity does not mean impunity.</strong> If a false report leads to legal action, ScamRadar will comply with court orders requiring disclosure of available technical data about the submitter.</p>
+  </div>
+
+  <!-- SECTION 11 -->
+  <div class="tos-section" id="s11">
+    <h2>11. Cyber Crime Reporting</h2>
+    <p>ScamRadar strongly encourages all users who have been victims of online fraud to also file an official complaint with Indian law enforcement authorities:</p>
+    <ul>
+      <li><strong>National Cyber Crime Reporting Portal:</strong> <a href="https://cybercrime.gov.in" target="_blank" rel="noopener" style="color:var(--accent)">cybercrime.gov.in</a></li>
+      <li><strong>National Cyber Crime Helpline:</strong> <strong style="color:var(--text)">1930</strong> (24/7, toll-free)</li>
+      <li><strong>Local police:</strong> File an FIR at your nearest police station</li>
+    </ul>
+    <p>ScamRadar is a community awareness tool and <strong>does not replace official law enforcement channels</strong>. Only official authorities have the power to investigate, arrest, and prosecute cyber criminals and to facilitate the recovery of stolen funds.</p>
+    <p>Reports submitted on ScamRadar that include an official Cyber Crime complaint acknowledgement number receive a <strong>"Police Complaint Filed ✓"</strong> indicator, which increases the credibility weight of the report in our community system.</p>
+  </div>
+
+  <!-- SECTION 12 -->
+  <div class="tos-section" id="s12">
+    <h2>12. Limitation of Liability</h2>
+    <div class="highlight-box">
+      <p><strong>To the maximum extent permitted by applicable law, ScamRadar, its founders, employees, agents, and affiliates shall not be liable for any direct, indirect, incidental, special, consequential, or punitive damages arising out of or in connection with:</strong></p>
+    </div>
+    <ul>
+      <li>Any report, content, or information submitted by users on the Platform</li>
+      <li>Any decision made by any person in reliance on information found on this Platform</li>
+      <li>Any loss, damage, or harm caused to any person as a result of a report submitted about them</li>
+      <li>Any failure to remove content promptly where ScamRadar was not notified through the proper dispute channel</li>
+      <li>Any technical failure, data loss, or interruption of service</li>
+    </ul>
+    <p>The Platform is provided <strong>"as is" and "as available"</strong> without any warranties of any kind, express or implied, including but not limited to warranties of accuracy, completeness, fitness for purpose, or non-infringement.</p>
+    <p>ScamRadar's total aggregate liability to any party shall in no event exceed <strong>₹1,000 (Indian Rupees One Thousand)</strong>, regardless of the form of action or the basis of the claim.</p>
+  </div>
+
+  <!-- SECTION 13 -->
+  <div class="tos-section" id="s13">
+    <h2>13. Indemnification</h2>
+    <p>You agree to <strong>fully indemnify, defend, and hold harmless</strong> ScamRadar, its founders, directors, employees, agents, and affiliates from and against any and all claims, damages, losses, liabilities, costs, and expenses (including reasonable legal fees) arising out of or relating to:</p>
+    <ul>
+      <li>Any report or content you submit to the Platform</li>
+      <li>Your violation of these Terms</li>
+      <li>Your violation of any applicable law or regulation</li>
+      <li>Any third-party claim arising from content you submitted</li>
+      <li>Any false, misleading, or malicious report you submitted</li>
+    </ul>
+    <p>This indemnification obligation survives the termination of your use of the Platform.</p>
+  </div>
+
+  <!-- SECTION 14 -->
+  <div class="tos-section" id="s14">
+    <h2>14. Governing Law & Jurisdiction</h2>
+    <p>These Terms shall be governed by and construed in accordance with the laws of <strong>India</strong>, without regard to its conflict of law principles.</p>
+    <p>Any dispute, claim, or controversy arising out of or relating to these Terms or the use of this Platform shall be subject to the exclusive jurisdiction of the courts of <strong>Indore, Madhya Pradesh, India</strong>.</p>
+    <p>If any provision of these Terms is held to be invalid or unenforceable by a court of competent jurisdiction, the remaining provisions shall continue in full force and effect.</p>
+  </div>
+
+  <!-- SECTION 15 -->
+  <div class="tos-section" id="s15">
+    <h2>15. Grievance Officer</h2>
+    <p>In accordance with the <strong>Information Technology (Intermediary Guidelines and Digital Media Ethics Code) Rules, 2021</strong>, ScamRadar has designated a Grievance Officer to address complaints and concerns:</p>
+    <ul>
+      <li><strong>Name:</strong> Grievance Officer, ScamRadar</li>
+      <li><strong>Email:</strong> grievance@scamradar.in</li>
+      <li><strong>Dispute Form:</strong> <a href="dispute.html" style="color:var(--accent)">scamradar.in/dispute</a></li>
+      <li><strong>Acknowledgement time:</strong> 24 hours</li>
+      <li><strong>Resolution time:</strong> 15 days</li>
+    </ul>
+    <p>The Grievance Officer will acknowledge every complaint within 24 hours and make reasonable efforts to resolve it within 15 days of receipt.</p>
+  </div>
+
+  <!-- SECTION 16 -->
+  <div class="tos-section" id="s16">
+    <h2>16. Changes to Terms</h2>
+    <p>ScamRadar reserves the right to modify these Terms at any time. Changes will be posted on this page with an updated effective date. Your continued use of the Platform after any changes constitutes your acceptance of the new Terms.</p>
+    <p>For material changes, ScamRadar will make reasonable efforts to notify users through a notice on the Platform's homepage.</p>
+  </div>
+
+  <!-- SECTION 17 -->
+  <div class="tos-section" id="s17">
+    <h2>17. Contact</h2>
+    <p>For general inquiries: <strong style="color:var(--text)">hello@scamradar.in</strong></p>
+    <p>For disputes and takedowns: <a href="dispute.html" style="color:var(--accent)">scamradar.in/dispute</a></p>
+    <p>For grievances: <strong style="color:var(--text)">grievance@scamradar.in</strong></p>
+    <p>For law enforcement requests: <strong style="color:var(--text)">legal@scamradar.in</strong></p>
+  </div>
+
+  <div class="tos-footer-note">
+    <p>By using ScamRadar, you acknowledge that you have read, understood, and agreed to these Terms of Service.<br/>
+    These Terms were last updated on <strong style="color:var(--text)">March 21, 2025</strong>.</p>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo"><div class="logo-icon" style="width:26px;height:26px;font-size:13px;">🛡️</div>Scam<span>Radar</span></div>
+    <p>Built to make India's internet safer.</p>
+    <div class="footer-links">
+      <a href="tos.html">Terms of Service</a>
+      <a href="dispute.html">Dispute</a>
+      <a href="index.html">Home</a>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/data.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

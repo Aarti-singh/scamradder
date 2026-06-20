@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Scam Feed – ScamRadar</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/style.css" />
+<link rel="stylesheet" href="assets/feed.css" />
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo"><div class="logo-icon">🛡️</div>Scam<span>Radar</span></a>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="feed.html" class="active">Live Feed</a></li>
+    <li><a href="search.html">Search</a></li>
+    <li><a href="report.html">Report Scam</a></li>
+    <li><a href="dashboard.html">Dashboard</a></li>
+  </ul>
+  <a href="report.html" class="btn-primary nav-cta">Report a Scam</a>
+  <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="feed.html">Live Feed</a>
+  <a href="search.html">Search</a>
+  <a href="report.html">Report Scam</a>
+  <a href="dashboard.html">Dashboard</a>
+</div>
+
+<div class="feed-layout">
+
+  <!-- LEFT SIDEBAR -->
+  <aside class="feed-sidebar left">
+    <div class="sidebar-card">
+      <div class="sidebar-title">🔴 Live Stats</div>
+      <div class="live-stats">
+        <div class="live-stat-row">
+          <span class="live-stat-label">Reports today</span>
+          <span class="live-stat-val" id="statToday">0</span>
+        </div>
+        <div class="live-stat-row">
+          <span class="live-stat-label">This week</span>
+          <span class="live-stat-val">47</span>
+        </div>
+        <div class="live-stat-row">
+          <span class="live-stat-label">Flagged entities</span>
+          <span class="live-stat-val accent">12</span>
+        </div>
+        <div class="live-stat-row">
+          <span class="live-stat-label">Amount lost today</span>
+          <span class="live-stat-val danger">₹38K</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-title">🏷️ Filter by tag</div>
+      <div class="tag-filters" id="tagFilters"></div>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-title">📍 Top Cities</div>
+      <div class="city-list" id="cityList"></div>
+    </div>
+  </aside>
+
+  <!-- MAIN FEED -->
+  <main class="feed-main">
+
+    <!-- NEW REPORT BANNER -->
+    <div class="new-report-banner" id="newReportBanner" style="display:none" onclick="loadNewReports()">
+      <span id="newReportCount">2 new reports</span> — Click to load
+    </div>
+
+    <!-- QUICK POST BOX -->
+    <div class="quick-post-box">
+      <div class="quick-post-avatar">🕵️</div>
+      <div class="quick-post-input" onclick="window.location.href='report.html'">
+        <span>Share a scam incident anonymously...</span>
+      </div>
+      <a href="report.html" class="btn-primary" style="font-size:0.85rem;padding:9px 18px;flex-shrink:0">Post</a>
+    </div>
+
+    <!-- FEED FILTER TABS -->
+    <div class="feed-tabs">
+      <button class="feed-tab active" onclick="switchTab('latest', this)">🕐 Latest</button>
+      <button class="feed-tab" onclick="switchTab('trending', this)">🔥 Trending</button>
+      <button class="feed-tab" onclick="switchTab('high-risk', this)">🚨 High Risk</button>
+      <button class="feed-tab" onclick="switchTab('nearby', this)">📍 Nearby</button>
+    </div>
+
+    <!-- FEED POSTS -->
+    <div id="feedPosts"></div>
+
+    <!-- LOAD MORE -->
+    <div class="load-more-wrap">
+      <button class="btn-secondary" id="loadMoreBtn" onclick="loadMore()">Load more reports</button>
+    </div>
+
+  </main>
+
+  <!-- RIGHT SIDEBAR -->
+  <aside class="feed-sidebar right">
+
+    <div class="sidebar-card">
+      <div class="sidebar-title">🚨 Most Wanted</div>
+      <div id="mostWanted"></div>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-title">📊 Scam Type Trend</div>
+      <div id="trendMini"></div>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-title">⚠️ Scam Alert</div>
+      <div class="alert-box">
+        <div class="alert-title">New phishing wave detected</div>
+        <div class="alert-body">Multiple users reporting fake KYC SMS links this week. Do not click links from unknown numbers.</div>
+        <div class="alert-time">Updated 2 hours ago</div>
+      </div>
+    </div>
+
+  </aside>
+
+</div>
+
+<script src="assets/data.js"></script>
+<script src="assets/feed-data.js"></script>
+<script src="assets/app.js"></script>
+<script src="assets/feed.js"></script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dashboard – ScamRadar</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo"><div class="logo-icon">🛡️</div>Scam<span>Radar</span></a>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="feed.html">Live Feed</a></li>
+    </li><a href="search.html">Search</a></li>
+    <li><a href="report.html">Report Scam</a></li>
+    <li><a href="dashboard.html" class="active">Dashboard</a></li>
+  </ul>
+  <a href="report.html" class="btn-primary nav-cta">Report a Scam</a>
+  <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a><a href="feed.html">Live Feed</a>
+  <a href="search.html">Search</a><a href="report.html">Report Scam</a><a href="dashboard.html">Dashboard</a>
+</div>
+
+<div class="page-header">
+  <div class="container">
+    <h1 style="font-size:clamp(1.8rem,4vw,2.8rem)">Scam Dashboard</h1>
+    <p class="section-sub" style="margin-bottom:0">Community-reported scams, statistics, and top flagged entities.</p>
+  </div>
+</div>
+
+<div class="container" style="padding-top:48px">
+
+  <!-- DASHBOARD STATS -->
+  <div class="dashboard-stats" id="dashStats"></div>
+
+  <!-- FILTERS -->
+  <div class="filter-bar">
+    <div class="filter-group">
+      <span class="filter-label">Filter by type:</span>
+      <button class="filter-btn active" onclick="filterReports('all',this)">All</button>
+      <button class="filter-btn" onclick="filterReports('phone',this)">📱 Phone</button>
+      <button class="filter-btn" onclick="filterReports('upi',this)">💳 UPI</button>
+      <button class="filter-btn" onclick="filterReports('email',this)">📧 Email</button>
+    </div>
+    <div class="filter-group">
+      <span class="filter-label">Risk:</span>
+      <button class="filter-btn" onclick="filterRisk('high',this)">🔴 High</button>
+      <button class="filter-btn" onclick="filterRisk('medium',this)">🟡 Medium</button>
+      <button class="filter-btn" onclick="filterRisk('low',this)">🟢 Low</button>
+    </div>
+  </div>
+
+  <!-- TOP FLAGGED -->
+  <div class="section-label" style="margin-top:48px">Top Flagged</div>
+  <h3 style="font-family:'Syne',sans-serif;font-weight:700;margin-bottom:24px">Most reported entities</h3>
+  <div id="topFlagged"></div>
+
+  <!-- ALL REPORTS -->
+  <div class="section-label" style="margin-top:56px">All Reports</div>
+  <h3 style="font-family:'Syne',sans-serif;font-weight:700;margin-bottom:24px">Community submissions</h3>
+  <div id="allReports"></div>
+
+  <!-- SCAM TYPES CHART -->
+  <div class="section-label" style="margin-top:56px">Analytics</div>
+  <h3 style="font-family:'Syne',sans-serif;font-weight:700;margin-bottom:24px">Scam type breakdown</h3>
+  <div class="chart-wrap">
+    <div id="scamTypeChart"></div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo"><div class="logo-icon" style="width:26px;height:26px;font-size:13px;">🛡️</div>Scam<span>Radar</span></div>
+    <p>Built to make India's internet safer.</p>
+    <div class="footer-links">
+      <a href="tos.html">Terms of Service</a><a href="report.html">Report</a><a href="feed.html">Live Feed</a>
+  <a href="search.html">Search</a></div>
+  </div>
+</footer>
+
+<script src="assets/data.js"></script>
+<script src="assets/app.js"></script>
+<script>
+  renderDashboard();
+</script>
+</body>
+</html>

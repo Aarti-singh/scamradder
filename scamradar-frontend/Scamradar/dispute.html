@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dispute a Report – ScamRadar</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/style.css" />
+<style>
+  .dispute-hero { padding: 120px 5% 60px; border-bottom: 1px solid var(--border); }
+  .dispute-hero h1 { font-size: clamp(1.8rem,4vw,2.8rem); margin-bottom: 12px; }
+  .dispute-hero p { color: var(--muted); max-width: 560px; font-weight: 300; line-height: 1.7; }
+
+  .dispute-grid { display: grid; grid-template-columns: 1fr 380px; gap: 40px; align-items: start; }
+  @media(max-width:800px){ .dispute-grid { grid-template-columns: 1fr; } }
+
+  .info-box { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 28px; margin-bottom: 16px; }
+  .info-box h3 { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: 10px; }
+  .info-box p, .info-box li { color: var(--muted); font-size: 0.87rem; line-height: 1.7; font-weight: 300; }
+  .info-box ol, .info-box ul { padding-left: 20px; }
+  .info-box li { margin-bottom: 6px; }
+
+  .timeline { display: flex; flex-direction: column; gap: 0; }
+  .timeline-item { display: flex; gap: 14px; padding-bottom: 24px; position: relative; }
+  .timeline-item:last-child { padding-bottom: 0; }
+  .timeline-dot { width: 28px; height: 28px; border-radius: 50%; background: var(--surface2); border: 2px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; flex-shrink: 0; position: relative; z-index: 1; }
+  .timeline-dot.done { background: rgba(34,209,122,0.15); border-color: var(--green); color: var(--green); }
+  .timeline-dot.active { background: rgba(255,77,77,0.15); border-color: var(--accent); color: var(--accent); }
+  .timeline-item:not(:last-child)::before { content:''; position: absolute; left: 13px; top: 28px; bottom: 0; width: 2px; background: var(--border); }
+  .timeline-body { flex: 1; padding-top: 4px; }
+  .timeline-title { font-size: 0.88rem; font-weight: 600; margin-bottom: 3px; }
+  .timeline-sub { font-size: 0.78rem; color: var(--muted); }
+
+  .form-label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 8px; }
+  .form-input {
+    width: 100%; background: var(--surface2); border: 1px solid var(--border);
+    border-radius: 10px; padding: 12px 16px; color: var(--text);
+    font-family: inherit; font-size: 0.9rem; outline: none;
+    transition: border-color 0.2s; margin-bottom: 20px;
+  }
+  .form-input:focus { border-color: rgba(255,77,77,0.4); }
+  textarea.form-input { resize: vertical; min-height: 100px; }
+
+  .legal-checkbox { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 24px; }
+  .legal-checkbox input { margin-top: 3px; flex-shrink: 0; accent-color: var(--accent); }
+  .legal-checkbox label { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
+  .legal-checkbox label strong { color: var(--text); }
+
+  .it-act-box {
+    background: rgba(255,77,77,0.05); border: 1px solid rgba(255,77,77,0.15);
+    border-radius: 12px; padding: 18px; margin-bottom: 24px;
+  }
+  .it-act-box h4 { font-size: 0.82rem; font-weight: 700; color: var(--accent); margin-bottom: 8px; }
+  .it-act-box p { font-size: 0.78rem; color: var(--muted); line-height: 1.6; }
+
+  #successState { display: none; text-align: center; padding: 48px 24px; }
+  #successState h2 { font-family: 'Syne', sans-serif; font-weight: 800; margin-bottom: 12px; }
+  #successState p { color: var(--muted); max-width: 400px; margin: 0 auto; font-size: 0.9rem; }
+  .ticket-id { font-family: monospace; background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 8px 16px; font-size: 0.9rem; margin: 16px auto; display: inline-block; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo"><div class="logo-icon">🛡️</div>Scam<span>Radar</span></a>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="feed.html">Live Feed</a></li>
+    <li><a href="search.html">Search</a></li>
+    <li><a href="report.html">Report Scam</a></li>
+    <li><a href="dashboard.html">Dashboard</a></li>
+  </ul>
+  <a href="report.html" class="btn-primary nav-cta">Report a Scam</a>
+  <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a><a href="feed.html">Live Feed</a>
+  <a href="search.html">Search</a><a href="report.html">Report Scam</a><a href="dashboard.html">Dashboard</a>
+</div>
+
+<!-- HERO -->
+<div class="dispute-hero">
+  <div style="max-width:1100px;margin:0 auto">
+    <div class="section-label">Dispute / Takedown</div>
+    <h1>Is your number falsely reported?</h1>
+    <p>ScamRadar only shows community-reported data, not verified facts. If you believe a report about you is false, malicious, or made in error — you have the right to dispute it. We take every dispute seriously.</p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="dispute-grid">
+
+    <!-- FORM -->
+    <div>
+      <div id="formState">
+        <div class="card" style="margin-bottom:20px">
+          <div class="card-title">⚖️ Submit a Dispute</div>
+          <p class="card-sub">Fill in the details below. Our grievance team will review within 72 hours as per IT Act 2000 intermediary guidelines.</p>
+
+          <label class="form-label">Your phone / UPI ID / email that was reported *</label>
+          <input type="text" class="form-input" id="disputeEntity" placeholder="e.g. 00011122233 or user@upi" />
+
+          <label class="form-label">Your name (kept confidential) *</label>
+          <input type="text" class="form-input" id="disputeName" placeholder="Full name" />
+
+          <label class="form-label">Contact email (for case updates) *</label>
+          <input type="email" class="form-input" id="disputeEmail" placeholder="your@email.com" />
+
+          <label class="form-label">Reason for dispute *</label>
+          <select class="form-input" id="disputeReason" style="cursor:pointer">
+            <option value="">Select a reason...</option>
+            <option value="false">Completely false — I have never been involved in any scam</option>
+            <option value="revenge">Revenge / malicious report — reported by someone I know</option>
+            <option value="mistaken">Mistaken identity — wrong number/email reported</option>
+            <option value="old">Old number — I no longer own this number/account</option>
+            <option value="resolved">Issue resolved — the matter was settled</option>
+            <option value="other">Other</option>
+          </select>
+
+          <label class="form-label">Your statement *</label>
+          <textarea class="form-input" id="disputeStatement" rows="5" placeholder="Explain why you believe this report is false or should be removed. Be specific. E.g. 'This number was previously owned by someone else. I acquired it 6 months ago. Telecom records can verify this.'"></textarea>
+
+          <label class="form-label">Supporting evidence (optional)</label>
+          <input type="text" class="form-input" id="disputeEvidence" placeholder="e.g. Link to court order, police complaint number, telecom records..." />
+
+          <div class="it-act-box">
+            <h4>📋 IT Act Section 79 — Your Rights</h4>
+            <p>Under the Information Technology Act 2000, ScamRadar is an intermediary platform displaying user-generated content. You have the right to request removal of content about you. We are required to acknowledge your complaint within 24 hours and resolve it within 15 days.</p>
+          </div>
+
+          <div class="legal-checkbox">
+            <input type="checkbox" id="legalCheck1" />
+            <label for="legalCheck1">I confirm that the information I'm providing is <strong>true and accurate</strong> to the best of my knowledge. I understand that filing a false dispute is itself a punishable offence under Indian law.</label>
+          </div>
+
+          <div class="legal-checkbox">
+            <input type="checkbox" id="legalCheck2" />
+            <label for="legalCheck2">I understand that ScamRadar displays <strong>community-reported data, not verified facts</strong>, and that the platform's disclaimer is visible on every result page.</label>
+          </div>
+
+          <button class="btn-primary" style="width:100%" onclick="submitDispute()">Submit Dispute →</button>
+        </div>
+      </div>
+
+      <!-- SUCCESS -->
+      <div id="successState" class="card">
+        <div style="font-size:3rem;margin-bottom:16px">✅</div>
+        <h2>Dispute Received</h2>
+        <p>Your dispute has been logged. Our grievance team will review and respond to your email within <strong>72 hours</strong>. Your case ID:</p>
+        <div class="ticket-id" id="ticketId">SR-DISPUTE-00000</div>
+        <p style="margin-top:12px;font-size:0.82rem">In the meantime, a <strong>"Disputed — Under Review"</strong> notice will be added to the relevant search result within 24 hours.</p>
+        <div style="margin-top:28px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+          <a href="search.html" class="btn-secondary">Search Again</a>
+          <a href="index.html" class="btn-primary">Go Home</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- SIDEBAR -->
+    <div>
+      <div class="info-box">
+        <h3>🔒 What happens after you submit?</h3>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot active">1</div>
+            <div class="timeline-body">
+              <div class="timeline-title">Dispute logged</div>
+              <div class="timeline-sub">Immediately. You receive a case ID.</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot">2</div>
+            <div class="timeline-body">
+              <div class="timeline-title">"Under Dispute" notice added</div>
+              <div class="timeline-sub">Within 24 hours. Visible on the result page.</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot">3</div>
+            <div class="timeline-body">
+              <div class="timeline-title">Team reviews evidence</div>
+              <div class="timeline-sub">Within 72 hours. We may contact reporters.</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot">4</div>
+            <div class="timeline-body">
+              <div class="timeline-title">Decision communicated</div>
+              <div class="timeline-sub">Within 15 days. Report removed or kept with notice.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-box">
+        <h3>🛡️ Our Safety Policies</h3>
+        <ul>
+          <li>Entities need <strong>3+ independent reports</strong> to appear publicly</li>
+          <li>All results carry a <strong>"community-reported, not verified"</strong> disclaimer</li>
+          <li>Risk scores <strong>decay over time</strong> if no new reports come in</li>
+          <li>Disputed entities are <strong>marked clearly</strong> in search results</li>
+          <li>Single-report entities are <strong>never shown</strong> publicly</li>
+          <li>We <strong>never say</strong> someone "is a scammer" — only that they were reported</li>
+        </ul>
+      </div>
+
+      <div class="info-box">
+        <h3>📞 Grievance Officer</h3>
+        <p>As required under IT Act Rule 3(2), our designated Grievance Officer can be reached at:</p>
+        <br/>
+        <p><strong style="color:var(--text)">grievance@scamradar.in</strong></p>
+        <p style="margin-top:6px">Response time: 24 hours acknowledgement, 15 days resolution</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo"><div class="logo-icon" style="width:26px;height:26px;font-size:13px;">🛡️</div>Scam<span>Radar</span></div>
+    <p>Built to make India's internet safer.</p>
+    <div class="footer-links">
+      <a href="dispute.html">Dispute</a>
+      <a href="report.html">Report</a>
+      <a href="search.html">Search</a>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/data.js"></script>
+<script src="assets/app.js"></script>
+<script>
+  // Pre-fill entity from URL param
+  const p = new URLSearchParams(window.location.search);
+  if (p.get('entity')) document.getElementById('disputeEntity').value = p.get('entity');
+
+  async function submitDispute() {
+    const entity    = document.getElementById('disputeEntity').value.trim();
+    const name      = document.getElementById('disputeName').value.trim();
+    const email     = document.getElementById('disputeEmail').value.trim();
+    const reason    = document.getElementById('disputeReason').value;
+    const statement = document.getElementById('disputeStatement').value.trim();
+    const evidence  = document.getElementById('disputeEvidence').value.trim();
+    const c1        = document.getElementById('legalCheck1').checked;
+    const c2        = document.getElementById('legalCheck2').checked;
+
+    if (!entity || !name || !email || !reason || !statement) {
+      alert('Please fill in all required fields.'); return;
+    }
+    if (!c1 || !c2) {
+      alert('Please accept both declarations before submitting.'); return;
+    }
+    if (!email.includes('@')) {
+      alert('Please enter a valid email address.'); return;
+    }
+
+    const submitBtn = document.querySelector('.btn-primary[onclick="submitDispute()"]');
+    if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Submitting...'; }
+
+    try {
+      const res  = await fetch(`${API_BASE}/dispute`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          entity_value: entity,
+          name:         name,
+          email:        email,
+          reason:       reason,
+          statement:    statement,
+          evidence:     evidence || null
+        })
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        document.getElementById('ticketId').textContent = data.ticket_id;
+        document.getElementById('formState').style.display = 'none';
+        document.getElementById('successState').style.display = 'block';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        alert('Submission failed. Please try again.');
+        if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Submit Dispute →'; }
+      }
+    } catch (err) {
+      console.error('Dispute error:', err);
+      alert('Could not connect to server. Please try again.');
+      if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Submit Dispute →'; }
+    }
+  }
+</script>
+</body>
+</html>

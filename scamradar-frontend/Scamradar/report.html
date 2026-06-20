@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Report Scam – ScamRadar</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo"><div class="logo-icon">🛡️</div>Scam<span>Radar</span></a>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="feed.html">Live Feed</a></li>
+    <li><a href="search.html">Search</a></li>
+    <li><a href="report.html" class="active">Report Scam</a></li>
+    <li><a href="dashboard.html">Dashboard</a></li>
+  </ul>
+  <a href="report.html" class="btn-primary nav-cta">Report a Scam</a>
+  <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a><a href="feed.html">Live Feed</a>
+  <a href="search.html">Search</a><a href="report.html">Report Scam</a><a href="dashboard.html">Dashboard</a>
+</div>
+
+<div class="page-header">
+  <div class="container">
+    <h1 style="font-size:clamp(1.8rem,4vw,2.8rem)">Report a Scam</h1>
+    <p class="section-sub" style="margin-bottom:0">Help the community. All reports are 100% anonymous.</p>
+  </div>
+</div>
+
+<!-- CYBERCRIME NUDGE BANNER -->
+<div class="cybercrime-nudge">
+  <div class="container" style="padding-top:0;padding-bottom:0">
+    <div class="cc-nudge-inner">
+      <div class="cc-nudge-left">
+        <span class="cc-nudge-icon">🚔</span>
+        <div>
+          <div class="cc-nudge-title">Also file an official complaint</div>
+          <div class="cc-nudge-sub">Reports with a Cyber Crime complaint number carry more credibility with the community. It takes 5 minutes.</div>
+        </div>
+      </div>
+      <a href="https://cybercrime.gov.in" target="_blank" rel="noopener" class="btn-primary" style="font-size:0.85rem;padding:10px 18px;flex-shrink:0">File on CyberCrime.gov.in →</a>
+    </div>
+  </div>
+</div>
+
+<div class="container" style="padding-top:40px;max-width:760px">
+
+  <!-- STEP INDICATOR -->
+  <div class="step-indicator">
+    <div class="step-dot active" id="dot1">1</div>
+    <div class="step-line"></div>
+    <div class="step-dot" id="dot2">2</div>
+    <div class="step-line"></div>
+    <div class="step-dot" id="dot3">3</div>
+  </div>
+  <div class="step-labels">
+    <span>Upload Screenshot</span>
+    <span>Fill Details</span>
+    <span>Submit</span>
+  </div>
+
+  <!-- STEP 1: UPLOAD -->
+  <div id="step1" class="form-step active">
+    <div class="card">
+      <h3 class="card-title">📸 Upload Screenshot (Optional)</h3>
+      <p class="card-sub">Upload a screenshot from WhatsApp, SMS, or any chat. Our OCR will automatically extract phone numbers, UPI IDs, and emails.</p>
+      <div class="upload-zone" id="uploadZone" onclick="document.getElementById('fileInput').click()">
+        <div class="upload-icon">📁</div>
+        <div class="upload-text">Click to upload or drag & drop</div>
+        <div class="upload-hint">PNG, JPG, JPEG up to 10MB</div>
+        <input type="file" id="fileInput" accept="image/*" style="display:none" onchange="handleFileUpload(event)" />
+      </div>
+      <div id="uploadPreview" style="display:none">
+        <div class="uploaded-img-wrap">
+          <img id="previewImg" src="" alt="Preview" />
+          <button class="remove-btn" onclick="removeUpload()">✕</button>
+        </div>
+        <div id="ocrProcessing" class="ocr-processing">
+          <div class="ocr-spinner"></div><span>Analysing screenshot with OCR...</span>
+        </div>
+        <div id="ocrResults" class="ocr-results" style="display:none">
+          <div class="ocr-header">✅ OCR Extracted Entities</div>
+          <div id="extractedEntities"></div>
+        </div>
+      </div>
+      <div class="form-actions">
+        <button class="btn-secondary" onclick="skipToStep2()">Skip, fill manually →</button>
+        <button class="btn-primary" id="step1Next" onclick="goToStep(2)" style="display:none">Next →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 2: DETAILS -->
+  <div id="step2" class="form-step">
+    <div class="card">
+      <h3 class="card-title">📝 Scam Details</h3>
+
+      <div class="form-group">
+        <label>Scam Type *</label>
+        <div class="tag-select" id="scamTypeSelect">
+          <span class="tag-option" onclick="selectTag(this,'scamType')">💼 Fake Job</span>
+          <span class="tag-option" onclick="selectTag(this,'scamType')">🛍️ OLX/Meesho Fraud</span>
+          <span class="tag-option" onclick="selectTag(this,'scamType')">💕 Dating Scam</span>
+          <span class="tag-option" onclick="selectTag(this,'scamType')">🏦 KYC/Banking</span>
+          <span class="tag-option" onclick="selectTag(this,'scamType')">📦 Delivery Fraud</span>
+          <span class="tag-option" onclick="selectTag(this,'scamType')">🎰 Investment Scam</span>
+          <span class="tag-option" onclick="selectTag(this,'scamType')">🔐 Phishing</span>
+          <span class="tag-option" onclick="selectTag(this,'scamType')">🎁 Lottery/Prize</span>
+          <span class="tag-option" onclick="selectTag(this,'scamType')">📱 Other</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Reported Entities</label>
+        <p style="font-size:0.8rem;color:var(--muted);margin-bottom:10px">Add the phone numbers, UPI IDs, or emails involved.</p>
+        <div id="entityInputs">
+          <div class="entity-input-row">
+  <select class="entity-type-select" onchange="updateEntityPlaceholder(this)">
+    <option value="phone">📱 Phone</option>
+    <option value="upi">💳 UPI ID</option>
+    <option value="email">📧 Email</option>
+  </select>
+  <input type="text" class="entity-value-input" 
+    placeholder="e.g. 9876543210" 
+    maxlength="10"
+    oninput="enforceEntityLimit(this)" />
+  <button class="remove-entity-btn" onclick="removeEntityRow(this)">✕</button>
+</div>
+            <input type="text" class="entity-value-input" placeholder="e.g. 00011122233" />
+            <button class="remove-entity-btn" onclick="removeEntityRow(this)">✕</button>
+          </div>
+        </div>
+        <button class="btn-ghost" onclick="addEntityRow()">+ Add another entity</button>
+      </div>
+
+      <div class="form-group">
+        <label>Description *</label>
+        <textarea id="descInput" rows="4" placeholder="Describe what happened in your own words. e.g. 'Contacted me on OLX, asked for advance payment for a bike, then disappeared...'" style="width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:14px;color:var(--text);font-family:inherit;font-size:0.9rem;resize:vertical;outline:none;"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Platform where incident occurred</label>
+        <div class="tag-select" id="platformSelect">
+          <span class="tag-option" onclick="selectTag(this,'platform')">💬 WhatsApp</span>
+          <span class="tag-option" onclick="selectTag(this,'platform')">📱 SMS</span>
+          <span class="tag-option" onclick="selectTag(this,'platform')">🛍️ OLX</span>
+          <span class="tag-option" onclick="selectTag(this,'platform')">💕 Dating App</span>
+          <span class="tag-option" onclick="selectTag(this,'platform')">📧 Email</span>
+          <span class="tag-option" onclick="selectTag(this,'platform')">📞 Phone Call</span>
+          <span class="tag-option" onclick="selectTag(this,'platform')">🐦 Telegram</span>
+          <span class="tag-option" onclick="selectTag(this,'platform')">🌐 Other</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Amount lost (₹) — optional</label>
+        <input type="number" id="amountInput" placeholder="0" style="background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:12px 16px;color:var(--text);font-family:inherit;font-size:0.9rem;outline:none;width:200px;" />
+      </div>
+
+      <!-- CYBER CRIME COMPLAINT FIELD -->
+      <div class="form-group">
+        <div class="cc-complaint-box">
+          <div class="cc-complaint-header">
+            <span class="cc-badge-verified">🚔 Cyber Crime Complaint</span>
+            <span class="cc-optional-label">Optional but recommended</span>
+          </div>
+          <p class="cc-complaint-desc">Have you filed a complaint on <a href="https://cybercrime.gov.in" target="_blank" rel="noopener" style="color:var(--accent)">cybercrime.gov.in</a>? Enter your complaint number below. Reports with official complaint numbers receive a <strong>"Police Complaint Filed ✓"</strong> verification badge and are treated with higher credibility.</p>
+          <input type="text" id="complaintNumber" 
+  placeholder="e.g. 1930-2025-XXXX or complaint acknowledgement number"
+  style="width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:12px 16px;color:var(--text);font-family:inherit;font-size:0.9rem;outline:none;margin-top:12px;transition:border-color 0.2s;"
+  oninput="validateComplaintNumber(this)"
+  onfocus="this.style.borderColor='rgba(255,77,77,0.4)'" 
+  onblur="if(!this.value) this.style.borderColor=''" />
+<div id="complaintNumStatus" style="margin-top:6px;min-height:20px"></div>
+          <div class="cc-no-complaint">
+            <span>Haven't filed yet?</span>
+            <a href="https://cybercrime.gov.in" target="_blank" rel="noopener" class="btn-ghost" style="font-size:0.78rem;padding:5px 12px;margin-left:8px">File now — takes 5 mins →</a>
+            <span style="color:var(--muted);font-size:0.75rem;margin-left:8px">or call <strong style="color:var(--text)">1930</strong> (National Cyber Crime Helpline)</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button class="btn-secondary" onclick="goToStep(1)">← Back</button>
+        <button class="btn-primary" onclick="goToStep(3)">Preview Report →</button>
+      </div>
+    </div>
+  </div>
+  <div id="complaintNumStatus" style="margin-top:-12px;margin-bottom:16px"></div>
+
+  <!-- STEP 3: PREVIEW & SUBMIT -->
+  <div id="step3" class="form-step">
+    <div class="card">
+      <h3 class="card-title">✅ Review & Submit</h3>
+      <div id="previewContent"></div>
+
+      <!-- SINGLE CHECKBOX — Twitter style -->
+      <div class="twitter-agree-row">
+        <input type="checkbox" id="decl1" />
+        <label for="decl1">This report is based on my real experience and is not intended to harm anyone.</label>
+      </div>
+      <div class="twitter-tos-line">
+        By submitting, you agree to ScamRadar's <a href="tos.html" target="_blank">Terms of Service</a>. Reports are anonymous and unverified community submissions.
+      </div>
+
+      <div class="anon-notice">
+        🔒 This report is 100% anonymous. Your identity is never stored or shared.
+      </div>
+
+      <div class="form-actions">
+        <button class="btn-secondary" onclick="goToStep(2)">← Edit</button>
+        <button class="btn-primary" id="submitBtn" onclick="submitReport()">Submit Report 🚀</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUCCESS -->
+  <div id="successStep" class="form-step">
+    <div class="card" style="text-align:center;padding:56px 32px">
+      <div style="font-size:4rem;margin-bottom:20px">🎉</div>
+      <h2 style="font-family:'Syne',sans-serif;font-weight:800;margin-bottom:12px">Report Submitted!</h2>
+      <p style="color:var(--muted);margin-bottom:24px;max-width:400px;margin-left:auto;margin-right:auto">Your report is under review. Once 3+ community members report the same entity, it becomes visible publicly.</p>
+      <div id="reportedEntitiesSuccess"></div>
+
+      <!-- POST-SUBMIT CYBERCRIME NUDGE -->
+      <div class="cc-post-submit" id="ccPostSubmit">
+        <div class="cc-post-icon">🚔</div>
+        <div class="cc-post-title">One more step — make it official</div>
+        <div class="cc-post-body">Your ScamRadar report helps the community. An official Cyber Crime complaint helps law enforcement take action and recover your money. It's free and takes 5 minutes.</div>
+        <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:16px">
+          <a href="https://cybercrime.gov.in" target="_blank" rel="noopener" class="btn-primary">File on CyberCrime.gov.in →</a>
+          <a href="tel:1930" class="btn-secondary">📞 Call 1930</a>
+        </div>
+        <div class="cc-post-note">National Cyber Crime Helpline · Available 24/7 · Free</div>
+      </div>
+
+      <div style="display:flex;gap:12px;justify-content:center;margin-top:28px;flex-wrap:wrap">
+        <a href="search.html" class="btn-secondary">Search Another</a>
+        <a href="report.html" class="btn-primary" onclick="resetForm()">Report Another</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="entity-input-row">
+  <select class="entity-type-select" onchange="updateEntityPlaceholder(this)">
+    <option value="phone">📱 Phone</option>
+    <option value="upi">💳 UPI ID</option>
+    <option value="email">📧 Email</option>
+  </select>
+  <input type="text" class="entity-value-input" 
+    placeholder="e.g. 9876543210" 
+    maxlength="10"
+    oninput="enforceEntityLimit(this)" />
+  <button class="remove-entity-btn" onclick="removeEntityRow(this)">✕</button>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo"><div class="logo-icon" style="width:26px;height:26px;font-size:13px;">🛡️</div>Scam<span>Radar</span></div>
+    <p>Built to make India's internet safer.</p>
+    <div class="footer-links">
+      <a href="tos.html">Terms of Service</a>
+      <a href="dispute.html">Dispute</a>
+      <a href="dashboard.html">Dashboard</a>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/data.js"></script>
+<script src="assets/app.js"></script>
+<script>
+// Override submitReport to check declarations
+window.submitReport = async function() {
+  const allChecked = document.getElementById('decl1')?.checked;
+  if (!allChecked) {
+    alert('Please confirm that this report is based on your real experience.');
+    return;
+  }
+
+  const complaintNum = document.getElementById('complaintNumber')?.value.trim();
+if (complaintNum) {
+  // Warn if format seems wrong but don't block submission
+  const patterns = [
+    /^1930\d{8,12}$/,
+    /^CC\/\d{4}\/\d{4,10}$/i,
+    /^FIR\/\d{4}\/\d{4,10}$/i,
+    /^\d{8,15}$/,
+    /^[A-Z0-9]{6,20}$/i,
+    /^[A-Z0-9\/\-]{6,30}$/i,
+  ];
+  const isValid = patterns.some(p => p.test(complaintNum));
+  if (!isValid) {
+    const proceed = confirm('⚠️ The complaint number format seems incorrect. Do you want to submit anyway?');
+    if (!proceed) return;
+  }
+  formData.complaintNumber = complaintNum;
+}
+
+  const nudge = document.getElementById('ccPostSubmit');
+  if (nudge) nudge.style.display = complaintNum ? 'none' : 'block';
+
+  const submitBtn = document.querySelector('#step3 .btn-primary');
+  if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Submitting...'; }
+
+  try {
+    const fd = new FormData();
+    fd.append('description', formData.description);
+    fd.append('scam_type',   formData.scamType || 'Other');
+    fd.append('platform',    formData.platform || 'Unknown');
+    fd.append('amount_lost', formData.amountLost || 0);
+    if (complaintNum) fd.append('complaint_number', complaintNum);
+    fd.append('entities', JSON.stringify(formData.entities));
+
+    const res  = await fetch(`${API_BASE}/reports`, { method: 'POST', body: fd });
+    const data = await res.json();
+
+    if (data.success) {
+      document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
+      document.getElementById('successStep').classList.add('active');
+      const c = document.getElementById('reportedEntitiesSuccess');
+      if (c && formData.entities.length) {
+        c.innerHTML = `<div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:8px">
+          ${formData.entities.map(e => `<div class="ocr-entity-chip">${entityIcon(e.type)} ${e.value}</div>`).join('')}
+        </div>`;
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      alert('Submission failed. Please try again.');
+      if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Submit Report'; }
+    }
+  } catch (err) {
+    alert('Could not connect to server. Please try again.');
+    if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Submit Report'; }
+  }
+};
+</script>
+</body>
+</html>
