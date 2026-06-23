@@ -3,7 +3,7 @@
 // =============================================
 
 // ---- API CONFIG ----
-const API_BASE = "http://127.0.0.1:8000/api/v1"; // Change to Render URL when deployed
+const API_BASE = "https://scamradder.onrender.com"; // Change to Render URL when deployed
 
 // ---- SAFETY CONSTANTS ----
 const REPORT_THRESHOLD = 3;   // Min independent reports before entity is publicly visible
