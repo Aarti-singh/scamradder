@@ -1,4 +1,5 @@
 import os
+import certifi
 from motor.motor_asyncio import AsyncIOMotorClient
 from dotenv import load_dotenv
 
@@ -8,10 +9,15 @@ client = None
 db = None
 
 async def connect_db():
+
     global client, db
     mongodb_url = os.getenv("MONGODB_URL")
     db_name = os.getenv("DB_NAME", "scamradar")
-    client = AsyncIOMotorClient(mongodb_url)
+    client = AsyncIOMotorClient(
+        mongodb_url,
+        tls=True,
+        tlsCAFile=certifi.where()
+    )
     db = client[db_name]
 
     # Create indexes for fast search
